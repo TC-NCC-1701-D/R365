@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace UnitTestCalculator
 {
@@ -84,5 +85,28 @@ namespace UnitTestCalculator
 
             Assert.AreEqual(expected, total);
         }
+
+        [TestMethod]
+        public void TestSumNumbersCase1F()
+        {
+            // validate exception for more than two params
+            string expected = "Numbers cannot be more than 2";
+            string result = "";
+            string delimeterInputData = ",";
+            string numberInputData = "5,2,1";
+
+            string[] delimeters = strCalc.GetDeleimeters(delimeterInputData);
+            try
+            {
+                long total = strCalc.SumNumbers(numberInputData, delimeters);
+            }
+            catch(Calculator.MoreThanTwoNumberException e)
+            {
+                result = e.Message;
+            }
+            Assert.AreEqual(expected, result);
+        }
+
+
     }
 }
