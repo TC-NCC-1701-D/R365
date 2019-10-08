@@ -47,8 +47,7 @@ namespace Calculator
         /// <returns></returns>
         public string[] GetDeleimeters(string delimeterInputData)
         {
-            string[] result = new []{delimeterInputData};
-            return result;
+            return delimeterInputData.Split('@');
         }
 
     }

@@ -109,7 +109,7 @@ namespace UnitTestCalculator
         //    Assert.AreEqual(expected, result);
         //}
 
-        // REQ CASE #1 -------------------------------------
+        // REQ CASE #2 -------------------------------------
 
         [TestMethod]
         public void TestSumNumbersCase2()
@@ -117,6 +117,22 @@ namespace UnitTestCalculator
             long expected = 78;
             string delimeterInputData = ",";
             string numberInputData = "1,2,3,4,5,6,7,8,9,10,11,12";
+
+            string[] delimeters = strCalc.GetDeleimeters(delimeterInputData);
+            long total = strCalc.SumNumbers(numberInputData, delimeters);
+
+            Assert.AreEqual(expected, total);
+        }
+
+
+        // REQ CASE #3 -------------------------------------
+
+        [TestMethod]
+        public void TestSumNumbersCase3()
+        {
+            long expected = 6;
+            string delimeterInputData = ",@\\n";
+            string numberInputData = "1\\n2,3"; // since we are not typing on the console we have to escape \ with \\
 
             string[] delimeters = strCalc.GetDeleimeters(delimeterInputData);
             long total = strCalc.SumNumbers(numberInputData, delimeters);

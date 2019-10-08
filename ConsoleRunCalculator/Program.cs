@@ -24,7 +24,11 @@ namespace ConsoleRunCalculator
                 {
                     Console.WriteLine("Enter numbers:");
                     numberInputData = Console.ReadLine();
-                    delimeterInputData = ","; // Based on Req rule 1
+                    //Because of Rule # 3 to allow \n and , as delimeters
+                    //Calculator requires delemeters be seperated by a @ symbol
+                    //and we need to escape \ with \\ so that it does not thing \n is new line.
+                    delimeterInputData = ",@\\n"; 
+
                     string[] delimeters = calc.GetDeleimeters(delimeterInputData);
                     long total = calc.SumNumbers(numberInputData, delimeters);
 
