@@ -22,11 +22,11 @@ namespace Calculator
             if (items.Length <= 0)
                 return 0;
 
-            int maxItems = 2;
-            if (items.Length > maxItems)
-            {
-                throw new MoreThanTwoNumberException("Numbers cannot be more than 2");
-            }
+            //int maxItems = 2;
+            //if (items.Length > maxItems)
+            //{
+            //    throw new MoreThanTwoNumberException("Numbers cannot be more than 2");
+            //}
 
             long result = 0;
             foreach (var num in items)

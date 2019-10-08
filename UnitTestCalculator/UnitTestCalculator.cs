@@ -86,25 +86,42 @@ namespace UnitTestCalculator
             Assert.AreEqual(expected, total);
         }
 
+        // As per req two limit has been removed 
+
+        //[TestMethod]
+        //public void TestSumNumbersCase1F()
+        //{
+        //    // validate exception for more than two params
+        //    string expected = "Numbers cannot be more than 2";
+        //    string result = "";
+        //    string delimeterInputData = ",";
+        //    string numberInputData = "5,2,1";
+
+        //    string[] delimeters = strCalc.GetDeleimeters(delimeterInputData);
+        //    try
+        //    {
+        //        long total = strCalc.SumNumbers(numberInputData, delimeters);
+        //    }
+        //    catch(Calculator.MoreThanTwoNumberException e)
+        //    {
+        //        result = e.Message;
+        //    }
+        //    Assert.AreEqual(expected, result);
+        //}
+
+        // REQ CASE #1 -------------------------------------
+
         [TestMethod]
-        public void TestSumNumbersCase1F()
+        public void TestSumNumbersCase2()
         {
-            // validate exception for more than two params
-            string expected = "Numbers cannot be more than 2";
-            string result = "";
+            long expected = 78;
             string delimeterInputData = ",";
-            string numberInputData = "5,2,1";
+            string numberInputData = "1,2,3,4,5,6,7,8,9,10,11,12";
 
             string[] delimeters = strCalc.GetDeleimeters(delimeterInputData);
-            try
-            {
-                long total = strCalc.SumNumbers(numberInputData, delimeters);
-            }
-            catch(Calculator.MoreThanTwoNumberException e)
-            {
-                result = e.Message;
-            }
-            Assert.AreEqual(expected, result);
+            long total = strCalc.SumNumbers(numberInputData, delimeters);
+
+            Assert.AreEqual(expected, total);
         }
 
 
