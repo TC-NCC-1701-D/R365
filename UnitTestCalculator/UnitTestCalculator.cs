@@ -218,6 +218,22 @@ namespace UnitTestCalculator
             Assert.AreEqual(expected, total);
         }
 
+        // REQ CASE #8 -------------------------------------
+
+        [TestMethod]
+        public void TestSumNumbersCase8()
+        {
+            long expected = 110;
+            string delimeterInputData = ",";
+            string numberInputData = "//[*][!!][r9r]\\n11r9r22*hh*33!!44";
+
+            strCalc.ParseInputData(ref delimeterInputData, ref numberInputData);
+            string[] delimeters = strCalc.GetDeleimeters(delimeterInputData);
+            long total = strCalc.SumNumbers(numberInputData, delimeters);
+
+            Assert.AreEqual(expected, total);
+        }
+
 
     }
 }
