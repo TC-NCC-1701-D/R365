@@ -34,18 +34,21 @@ namespace UnitTestCalculator
             Assert.AreEqual(expected, total);
         }
 
-        [TestMethod]
-        public void TestSumNumbersCase1B()
-        {
-            long expected = 5001;
-            string delimeterInputData = ",";
-            string numberInputData = "1,5000";
-            
-            string[] delimeters = strCalc.GetDeleimeters(delimeterInputData);
-            long total = strCalc.SumNumbers(numberInputData, delimeters);
+        // Rule # 5 does not allow numbers > 1000
+        //[TestMethod]
+        //public void TestSumNumbersCase1B()
+        //{
+        //    long expected = 5001;
+        //    string delimeterInputData = ",";
+        //    string numberInputData = "1,5000";
 
-            Assert.AreEqual(expected, total);
-        }
+        //    string[] delimeters = strCalc.GetDeleimeters(delimeterInputData);
+        //    long total = strCalc.SumNumbers(numberInputData, delimeters);
+
+        //    Assert.AreEqual(expected, total);
+        //}
+
+
 
         // Rule # 4 does not allow negative numbers
         //[TestMethod]
@@ -54,7 +57,7 @@ namespace UnitTestCalculator
         //    long expected = 1;
         //    string delimeterInputData = ",";
         //    string numberInputData = "4,-3";
-            
+
         //    string[] delimeters = strCalc.GetDeleimeters(delimeterInputData);
         //    long total = strCalc.SumNumbers(numberInputData, delimeters);
 
@@ -162,6 +165,23 @@ namespace UnitTestCalculator
                 result = e.Message;
             }
             Assert.AreEqual(expected, result);
+        }
+
+
+
+        // REQ CASE #5 -------------------------------------
+
+        [TestMethod]
+        public void TestSumNumbersCase5()
+        {
+            long expected = 8;
+            string delimeterInputData = ",";
+            string numberInputData = "2,1001,6";
+
+            string[] delimeters = strCalc.GetDeleimeters(delimeterInputData);
+            long total = strCalc.SumNumbers(numberInputData, delimeters);
+
+            Assert.AreEqual(expected, total);
         }
 
 

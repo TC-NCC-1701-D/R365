@@ -41,7 +41,12 @@ namespace Calculator
                 long data = 0;
                 bool isNum = long.TryParse(num, out data);
                 if (isNum)
-                    result += data;
+                { // only add numbers < 1000 rule # 5
+                    if (data <= 1000) 
+                        result += data;
+                    else
+                        result += 0;
+                }
             }
             return result;
 
