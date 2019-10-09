@@ -28,6 +28,13 @@ namespace Calculator
             //    throw new MoreThanTwoNumberException("Numbers cannot be more than 2");
             //}
 
+
+            string negNumbers = ValidateNegativeNumbers(items);
+            if (negNumbers.Length > 0)
+            {
+                throw new InvalidNegativeNumberException(string.Format("Negative numbers are not allowed: {0}", negNumbers));
+            }
+
             long result = 0;
             foreach (var num in items)
             {
@@ -48,6 +55,20 @@ namespace Calculator
         public string[] GetDeleimeters(string delimeterInputData)
         {
             return delimeterInputData.Split('@');
+        }
+
+
+        public string ValidateNegativeNumbers(string[] items)
+        {
+            string negDatas = "";
+            foreach (var num in items)
+            {
+                long data = 0;
+                bool isNum = long.TryParse(num, out data);
+                if (isNum && data < 0)
+                    negDatas += data.ToString() + " ";
+            }
+            return negDatas.Trim();
         }
 
     }

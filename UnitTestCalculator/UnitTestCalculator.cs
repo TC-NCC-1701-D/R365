@@ -47,18 +47,19 @@ namespace UnitTestCalculator
             Assert.AreEqual(expected, total);
         }
 
-        [TestMethod]
-        public void TestSumNumbersCase1C()
-        {
-            long expected = 1;
-            string delimeterInputData = ",";
-            string numberInputData = "4,-3";
+        // Rule # 4 does not allow negative numbers
+        //[TestMethod]
+        //public void TestSumNumbersCase1C()
+        //{
+        //    long expected = 1;
+        //    string delimeterInputData = ",";
+        //    string numberInputData = "4,-3";
             
-            string[] delimeters = strCalc.GetDeleimeters(delimeterInputData);
-            long total = strCalc.SumNumbers(numberInputData, delimeters);
+        //    string[] delimeters = strCalc.GetDeleimeters(delimeterInputData);
+        //    long total = strCalc.SumNumbers(numberInputData, delimeters);
 
-            Assert.AreEqual(expected, total);
-        }
+        //    Assert.AreEqual(expected, total);
+        //}
 
         [TestMethod]
         public void TestSumNumbersCase1D()
@@ -138,6 +139,29 @@ namespace UnitTestCalculator
             long total = strCalc.SumNumbers(numberInputData, delimeters);
 
             Assert.AreEqual(expected, total);
+        }
+
+        // REQ CASE #4 -------------------------------------
+
+        [TestMethod]
+        public void TestSumNumbersCase4()
+        {
+            // validate exception for more than two params
+            string expected = string.Format("Negative numbers are not allowed: {0}", -5);
+            string result = "";
+            string delimeterInputData = ",";
+            string numberInputData = "1,-5";
+
+            string[] delimeters = strCalc.GetDeleimeters(delimeterInputData);
+            try
+            {
+                long total = strCalc.SumNumbers(numberInputData, delimeters);
+            }
+            catch (Calculator.InvalidNegativeNumberException e)
+            {
+                result = e.Message;
+            }
+            Assert.AreEqual(expected, result);
         }
 
 
