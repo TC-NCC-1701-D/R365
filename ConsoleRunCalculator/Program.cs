@@ -41,6 +41,10 @@ namespace ConsoleRunCalculator
                 {
                     Console.WriteLine(e.Message);
                 }
+                catch (Calculator.InvalidNegativeNumberException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);

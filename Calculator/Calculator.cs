@@ -53,7 +53,8 @@ namespace Calculator
         }
 
         /// <summary>
-        /// Converts a single delemeter to string[]
+        /// Converts a single delemeter to string[]. It also checks if user sent deleimeter definations in the input string
+        /// , if yes then it parses them.
         /// </summary>
         /// <param name="delimeterInputData"></param>
         /// <returns></returns>
@@ -75,7 +76,11 @@ namespace Calculator
             return result.Split('@');
         }
 
-
+        /// <summary>
+        /// Validate negative inputs and return a string containing negative input data
+        /// </summary>
+        /// <param name="items"></param>
+        /// <returns></returns>
         public string ValidateNegativeNumbers(string[] items)
         {
             string negDatas = "";
@@ -89,8 +94,14 @@ namespace Calculator
             return negDatas.Trim();
         }
 
+        /// <summary>
+        /// /This method parses delimeter definations and input test data
+        /// </summary>
+        /// <param name="delimeterInputData">return delemeters </param>
+        /// <param name="numberInputData">return test data for calc</param>
         public void ParseInputData(ref string delimeterInputData, ref string numberInputData)
         {
+            // check to see if user is passing deleimeter defination format markers
             if (numberInputData.Contains("//"))
             {
                 string[] result = numberInputData.Split('n');
