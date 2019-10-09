@@ -27,8 +27,10 @@ namespace ConsoleRunCalculator
                     //Because of Rule # 3 to allow \n and , as delimeters
                     //Calculator requires delemeters be seperated by a @ symbol
                     //and we need to escape \ with \\ so that it does not thing \n is new line.
-                    delimeterInputData = ",@\\n"; 
-
+                    delimeterInputData = ",@\\n";
+                    // due to custom rule where a user can pass delemeter def with input data we need to parse delemeter and data
+                    // from input;
+                    calc.ParseInputData(ref delimeterInputData, ref numberInputData);
                     string[] delimeters = calc.GetDeleimeters(delimeterInputData);
                     long total = calc.SumNumbers(numberInputData, delimeters);
 

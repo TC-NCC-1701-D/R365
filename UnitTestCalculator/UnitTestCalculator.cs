@@ -185,5 +185,22 @@ namespace UnitTestCalculator
         }
 
 
+        // REQ CASE #6 -------------------------------------
+
+        [TestMethod]
+        public void TestSumNumbersCase6()
+        {
+            long expected = 7;
+            string delimeterInputData = ",";
+            string numberInputData = "//#\\n2#5";
+
+            strCalc.ParseInputData(ref delimeterInputData, ref numberInputData);
+            string[] delimeters = strCalc.GetDeleimeters(delimeterInputData);
+            long total = strCalc.SumNumbers(numberInputData, delimeters);
+
+            Assert.AreEqual(expected, total);
+        }
+
+
     }
 }

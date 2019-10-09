@@ -59,7 +59,20 @@ namespace Calculator
         /// <returns></returns>
         public string[] GetDeleimeters(string delimeterInputData)
         {
-            return delimeterInputData.Split('@');
+            string result = delimeterInputData;
+
+            if (delimeterInputData.Contains("//"))
+            {
+                result = delimeterInputData
+                                    .Replace("//", "")
+                                    .Replace("\\", "")
+                                    .Replace("][", "@")
+                                    .Replace("[", "")
+                                    .Replace("]", "");
+            }
+
+
+            return result.Split('@');
         }
 
 
@@ -74,6 +87,19 @@ namespace Calculator
                     negDatas += data.ToString() + " ";
             }
             return negDatas.Trim();
+        }
+
+        public void ParseInputData(ref string delimeterInputData, ref string numberInputData)
+        {
+            if (numberInputData.Contains("//"))
+            {
+                string[] result = numberInputData.Split('n');
+                if (result.Length > 1)
+                {
+                    delimeterInputData = result[0];
+                    numberInputData = result[1];
+                }
+            }
         }
 
     }
