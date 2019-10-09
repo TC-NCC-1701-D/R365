@@ -235,5 +235,22 @@ namespace UnitTestCalculator
         }
 
 
+        // REQ CASE #Stretch Goal Test #1 -------------------------------------
+
+        [TestMethod]
+        public void TestSumNumbersCaseStretch1()
+        {
+            long expected = 12;
+            string delimeterInputData = ",";
+            string numberInputData = "2,,4,rrrr,1001,6";
+
+            strCalc.ParseInputData(ref delimeterInputData, ref numberInputData);
+            string[] delimeters = strCalc.GetDeleimeters(delimeterInputData);
+            long total = strCalc.SumNumbers(numberInputData, delimeters);
+
+            Assert.AreEqual(expected, total);
+        }
+
+
     }
 }
